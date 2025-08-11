@@ -13,7 +13,7 @@ module ForemanLiuPatches
     def netbios_name
       return unless shortname && shortname.size > 15
 
-      errors.add(:name, "Windows needs a hostname with <= 15 characters.")
+      errors.add(:name, 'Windows needs a hostname with <= 15 characters.')
     end
   end
 end

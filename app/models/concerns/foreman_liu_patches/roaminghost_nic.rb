@@ -41,7 +41,7 @@ module ForemanLiuPatches
     end
 
     def roaminghost6?
-      subnet6&.network == 'fe80::' || ip6 == 'fe80::' 
+      subnet6&.network == 'fe80::' || ip6 == 'fe80::'
     end
   end
 end

@@ -17,9 +17,9 @@ module ForemanLiuPatches
       # If the subnet DHCP server doesn't want hostnames, always store it as an IPv4 address
       unless subnet.dhcp.has_capability?(:DHCP, :dhcp_filename_hostname)
         res = Resolv::DNS
-          .open { |dns| dns.getaddresses(boot_server_or_proxy_hostname) }
-          .select { |addr| addr.is_a? Resolv::IPv4 }
-          .first
+              .open { |dns| dns.getaddresses(boot_server_or_proxy_hostname) }
+              .select { |addr| addr.is_a? Resolv::IPv4 }
+              .first
         return res.to_s if res
       end
 

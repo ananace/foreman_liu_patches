@@ -6,7 +6,7 @@ module ForemanLiuPatches
     def snippet(name, options = {}, variables: {})
       unless options.delete :only_upstream
         forked = source.find_snippet("LiU #{name}")
-        
+
         return super("LiU #{name}", options, variables: variables) if forked
       end
 

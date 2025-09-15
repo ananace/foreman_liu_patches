@@ -41,6 +41,8 @@ module ForemanLiuPatches
       ::Nic::Managed.prepend ForemanLiuPatches::KeepInterfaceAddress
       # Modify handling of DNS entries to work better with InfoBlox
       ::Nic::Managed.prepend ForemanLiuPatches::DnsHandling
+      # Render LiU-forked snippets if available
+      ::Foreman::Renderer::Scope::Macros::SnippetRendering.prepend ForemanLiuPatches::ForkedSnippets
     rescue StandardError => e
       Rails.logger.warn "ForemanLiuPatches: skipping engine hook(#{e})"
     end

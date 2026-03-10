@@ -17,7 +17,7 @@ module ForemanLiuPatches
     initializer 'foreman_liu_patches.register_plugin', before: :finisher_hook do |app|
       app.reloader.to_prepare do
         Foreman::Plugin.register :foreman_liu_patches do
-          requires_foreman '>= 3.12'
+          requires_foreman '>= 3.13'
         end
       end
     end
@@ -40,7 +40,7 @@ module ForemanLiuPatches
       # Foreman is source-of-truth for interface addresses
       ::Nic::Managed.prepend ForemanLiuPatches::KeepInterfaceAddress
       # Modify handling of DNS entries to work better with InfoBlox
-      ::Nic::Managed.prepend ForemanLiuPatches::DnsHandling
+      ::Nic::Managed.prepend ForemanLiuPatches::DNSHandling
       # Render LiU-forked snippets if available
       ::Foreman::Renderer::Scope::Macros::SnippetRendering.prepend ForemanLiuPatches::ForkedSnippets
     rescue StandardError => e

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module ForemanLiuPatches
-  module DnsHandling
+  module DNSHandling
     def recreate_dns_record(type)
       # Upstream method will skip creation if the local DNS resolver thinks the entry still exists
       # This breaks both with local caching, as well as with the distributed InfoBlox resolvers

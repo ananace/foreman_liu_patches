@@ -4,13 +4,21 @@ module ForemanLiuPatches
   module ForkedSnippets
     # Always render LiU-forked snippets, but allow rendering upstream/original snippet as well
     def snippet(name, options = {}, variables: {})
-      unless options.delete :only_upstream
-        forked = source.find_snippet("LiU #{name}")
+      use_upstream = options.delete(:only_upstream) || options.delete(:use_upstream)
 
-        return super("LiU #{name}", options, variables: variables) if forked
+      # If the snipped called into itself
+      if !use_upstream && request.env[:rendered_from_fork] == name
+        Foreman::Logging.logger('app').warn("Snippet 'LiU #{name}' called into itself, falling back to upstream instead of overflowing stack")
+        use_upstream = true
       end
 
-      super
+      return super if use_upstream
+
+      forked = source.find_snippet("LiU #{name}")
+      return super unless forked
+
+      request.env[:rendered_from_fork] = name
+      return super("LiU #{name}", options, variables: variables)
     end
   end
 end

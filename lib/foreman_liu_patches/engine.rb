@@ -43,6 +43,8 @@ module ForemanLiuPatches
       ::Nic::Managed.prepend ForemanLiuPatches::DNSHandling
       # Render LiU-forked snippets if available
       ::Foreman::Renderer::Scope::Macros::SnippetRendering.prepend ForemanLiuPatches::ForkedSnippets
+      # Skip asset pipeline for avatars
+      ::ApplicationHelper.prepend ForemanLiuPatches::AvatarFix
     rescue StandardError => e
       Rails.logger.warn "ForemanLiuPatches: skipping engine hook(#{e})"
     end

@@ -7,7 +7,7 @@ module ForemanLiuPatches
     extend ActiveSupport::Concern
 
     prepended do
-      validate :netbios_name, if: -> { managed? && operatingsystem.type == 'Windows' }
+      validate :netbios_name, if: -> { managed? && operatingsystem&.type == 'Windows' }
     end
 
     def netbios_name

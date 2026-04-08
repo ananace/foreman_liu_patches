@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Pre-load some files that have issues loading on-demand
+require 'rack/media_type'
+
 module ForemanLiuPatches
   class Engine < ::Rails::Engine
     engine_name 'foreman_liu_patches'

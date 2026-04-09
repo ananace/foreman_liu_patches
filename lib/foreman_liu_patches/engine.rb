@@ -2,6 +2,7 @@
 
 # Pre-load some files that have issues loading on-demand
 require 'rack/media_type'
+require 'rack/multipart'
 
 module ForemanLiuPatches
   class Engine < ::Rails::Engine

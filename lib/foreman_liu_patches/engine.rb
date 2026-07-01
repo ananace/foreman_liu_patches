@@ -35,6 +35,8 @@ module ForemanLiuPatches
       ::Host::Managed.prepend ForemanLiuPatches::ClearCertnameOnBuild
       # Limit Windows hostname length to integrate better with AD
       ::Host::Managed.prepend ForemanLiuPatches::WindowsHostnameLimit
+      # foreman_default_host_group will check for reports, which breaks for discovered hosts
+      ::Host::Discovered.prepend ForemanLiuPatches::FixDefaulthostgroup if defined?(::Host::Discovered)
       # Filter list of acceptable PXE loaders to those available at LiU
       ::Operatingsystem.extend ForemanLiuPatches::PxeloaderFiltering
       # Expand FreeBSD PXE loader list to match our local setup

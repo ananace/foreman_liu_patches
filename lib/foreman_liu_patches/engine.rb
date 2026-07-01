@@ -52,7 +52,7 @@ module ForemanLiuPatches
       # Skip asset pipeline for avatars
       ::ApplicationHelper.prepend ForemanLiuPatches::AvatarFix
       # Apply LiU integration service values
-      ::ForemanHyperv::Hyperv.prepend ForemanLiuPatches::HypervServices
+      ::ForemanHyperv::Hyperv.prepend ForemanLiuPatches::HypervServices if defined?(::ForemanHyperv::Hyperv)
     rescue StandardError => e
       Rails.logger.warn "ForemanLiuPatches: skipping engine hook(#{e})"
     end

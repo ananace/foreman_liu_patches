@@ -15,6 +15,8 @@ module ForemanLiuPatches
     private
 
     def roaminghost?
+      return false if self.is_a?(Host::Discovered)
+
       subnet&.network == '0.0.0.0' || subnet6&.network == 'fe80::'
     end
   end

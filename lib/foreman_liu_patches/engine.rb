@@ -44,7 +44,7 @@ module ForemanLiuPatches
       # Allow the use of our "No IPv6" subnet at all time
       ::SubnetsConsistencyValidator.prepend ForemanLiuPatches::NoIpv6Validation
       # Foreman is source-of-truth for interface addresses
-      ::Nic::Managed.prepend ForemanLiuPatches::KeepInterfaceAddress
+      ::Host::Managed.prepend ForemanLiuPatches::KeepInterfaceAddress
       # Modify handling of DNS entries to work better with InfoBlox
       ::Nic::Managed.prepend ForemanLiuPatches::DNSHandling
       # Render LiU-forked snippets if available

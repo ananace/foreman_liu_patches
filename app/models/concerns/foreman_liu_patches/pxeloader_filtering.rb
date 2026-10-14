@@ -6,7 +6,7 @@ module ForemanLiuPatches
     def all_loaders
       super & [
         'None',
-        'PXELinux BIOS',
+        # 'PXELinux BIOS',
         # 'Grub2 UEFI',
         # 'Grub2 UEFI SecureBoot',
         'iPXE Embedded',

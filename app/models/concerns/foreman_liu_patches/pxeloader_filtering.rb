@@ -7,8 +7,8 @@ module ForemanLiuPatches
       super & [
         'None',
         'PXELinux BIOS',
-        'Grub2 UEFI',
-        'Grub2 UEFI SecureBoot',
+        # 'Grub2 UEFI',
+        # 'Grub2 UEFI SecureBoot',
         'iPXE Embedded',
         'iPXE Chain BIOS',
         'iPXE Chain UEFI'
